@@ -5,10 +5,12 @@ import initAPIRoute from './route/api';
 // import connection from './configs/connectDB';
 
 require(`dotenv`).config();
+var morgan = require('morgan');
 
 const app = express()
 const port = process.env.PORT || 3000; // khi PORT ko chạy thì lấy 3000
 
+app.use(morgan('combined'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -16,8 +18,13 @@ app.use(express.json());
 configViewEngine(app);
 //init web route
 initWebRoute(app);
-// init API route
+//init API route
 initAPIRoute(app);
+
+//handle 404 not found
+app.use((req, res) => {
+    return res.render('404.ejs')
+})
 
 
 
