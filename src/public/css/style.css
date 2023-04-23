@@ -63,3 +63,11 @@ body {
 .upload-file-container label {
     display: block;
 }
+
+.upload-file-container h1 {
+    margin: 15px;
+}
+
+hr {
+    border-top: 3px solid black !important;
+}
